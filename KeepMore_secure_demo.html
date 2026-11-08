@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KeepMore — Demo</title>
+<style>
+:root{--bg:#f4f7f5;--card:#fff;--ink:#17231d;--muted:#6d7b72;--green:#176b45;--pale:#e8f4ed;--line:#e5ebe7;--amber:#fff5df}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#103d2a;color:white;padding:22px 18px 18px;position:sticky;top:0;z-index:2}
+.brand{font-size:23px;font-weight:800;letter-spacing:-.7px}.tag{font-size:12px;color:#c8e5d3;margin-top:3px}
+nav{display:flex;gap:8px;overflow:auto;padding:12px 14px;background:white;border-bottom:1px solid var(--line)}
+nav button{white-space:nowrap;border:0;border-radius:20px;padding:9px 13px;background:#f0f4f1;color:#405148;font-weight:650}
+nav button.active{background:var(--green);color:white}
+main{max-width:720px;margin:auto;padding:18px 14px 40px}.welcome{display:flex;justify-content:space-between;align-items:center;margin:5px 2px 16px}
+h1{font-size:25px;margin:0 0 5px;letter-spacing:-.8px}h2{font-size:17px;margin:0 0 13px}p{line-height:1.5}.muted{color:var(--muted)}.small{font-size:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;margin:12px 0;box-shadow:0 3px 12px #173d2910}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:750}
+.amount{font-size:34px;font-weight:800;letter-spacing:-1px;margin:6px 0}.positive{color:var(--green)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f7faf8;border-radius:13px;padding:13px}.metric strong{display:block;font-size:20px;margin-top:5px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
+.pill{font-size:11px;font-weight:700;padding:5px 8px;border-radius:20px;background:var(--pale);color:var(--green)}
+button.primary,.action{border:0;border-radius:11px;padding:11px 14px;background:var(--green);color:white;font-weight:700;cursor:pointer}
+button.secondary{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:white;color:var(--ink);font-weight:650}
+.bar{height:8px;background:#edf1ee;border-radius:10px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:#329568;border-radius:10px}
+.page{display:none}.page.active{display:block}
+.notice{background:var(--amber);border:1px solid #f1e3bd;padding:12px;border-radius:12px;font-size:13px;line-height:1.45}
+input[type=file]{max-width:100%;margin:10px 0}table{width:100%;border-collapse:collapse;font-size:13px}td{padding:10px 5px;border-bottom:1px solid var(--line)}td:last-child{text-align:right}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:18px}
+</style>
+</head>
+<body>
+<header><div class="brand">KeepMore</div><div class="tag">Know your money. Keep more of it.</div></header>
+<nav>
+<button class="active" data-page="overview">Overview</button><button data-page="spending">Spending</button><button data-page="recurring">Subscriptions</button><button data-page="actions">Save more</button><button data-page="privacy">Privacy</button>
+</nav>
+<main>
+<section id="overview" class="page active">
+<div class="welcome"><div><div class="eyebrow">Your money at a glance</div><h1>Good morning 👋</h1><div class="muted small">A sample snapshot of your finances</div></div><span class="pill">DEMO</span></div>
+<div class="card"><div class="eyebrow">Monthly spending</div><div class="amount">$2,486.40</div><div class="positive small">You're tracking your spending with KeepMore</div></div>
+<div class="grid">
+<div class="metric"><span class="muted small">Income</span><strong>$4,200</strong></div>
+<div class="metric"><span class="muted small">Left this month</span><strong>$1,713</strong></div>
+<div class="metric"><span class="muted small">Savings opportunities</span><strong>$86/mo</strong></div>
+<div class="metric"><span class="muted small">Savings goal</span><strong>42%</strong></div>
+</div>
+<div class="card"><h2>Spending breakdown</h2>
+<div class="row"><div style="flex:1">Housing <div class="bar"><span style="width:85%"></span></div></div><b>$1,100</b></div>
+<div class="row"><div style="flex:1">Groceries <div class="bar"><span style="width:58%"></span></div></div><b>$520</b></div>
+<div class="row"><div style="flex:1">Transport <div class="bar"><span style="width:34%"></span></div></div><b>$310</b></div>
+<div class="row"><div style="flex:1">Eating out <div class="bar"><span style="width:28%"></span></div></div><b>$245</b></div>
+</div>
+<div class="notice">This is a demonstration using fictional sample figures. It is not connected to a bank account.</div>
+</section>
+<section id="spending" class="page">
+<h1>Spending analysis</h1><p class="muted">See where money is going and spot patterns.</p>
+<div class="card"><h2>Sample transactions</h2><table><tr><td>Supermarket</td><td>Groceries</td><td>-$86.40</td></tr><tr><td>Power company</td><td>Utilities</td><td>-$142.00</td></tr><tr><td>Fuel station</td><td>Transport</td><td>-$78.50</td></tr><tr><td>Cafe</td><td>Eating out</td><td>-$18.90</td></tr><tr><td>Internet provider</td><td>Utilities</td><td>-$89.00</td></tr></table></div>
+<div class="card"><h2>Try a transaction CSV</h2><p class="small muted">Choose a CSV file to preview it locally in this browser. It is not uploaded or saved by this demo. Use sample or non-sensitive data only.</p><input id="csvFile" type="file" accept=".csv,text/csv"><div id="csvResult" class="small muted">No file selected.</div></div>
+</section>
+<section id="recurring" class="page">
+<h1>Recurring payments</h1><p class="muted">Potential regular payments for you to review.</p>
+<div class="card"><div class="row"><div><b>Streaming service</b><div class="small muted">$19.99 monthly · High confidence</div></div><span class="pill">Review</span></div><div class="row"><div><b>Internet provider</b><div class="small muted">$89 monthly · High confidence</div></div><span class="pill">Review</span></div><div class="row"><div><b>Fitness membership</b><div class="small muted">$16.50 weekly · Medium confidence</div></div><span class="pill">Review</span></div><p class="small muted">A recurring payment is not automatically unwanted. Check each one before taking action.</p></div>
+</section>
+<section id="actions" class="page">
+<h1>Your savings action plan</h1><p class="muted">Illustrative ideas based on the sample profile.</p>
+<div class="card"><div class="row"><div><b>Compare internet plans</b><div class="small muted">Check whether a similar plan is available for less.</div></div><b class="positive">$15/mo</b></div><div class="row"><div><b>Review streaming services</b><div class="small muted">Keep the services you use; pause any you don't.</div></div><b class="positive">$20/mo</b></div><div class="row"><div><b>Plan two meals ahead</b><div class="small muted">Could help reduce unplanned takeaway spending.</div></div><b class="positive">$50/mo</b></div><div class="notice">Estimated savings are examples, not guarantees. Actual savings depend on your choices and available offers.</div></div>
+<div class="card"><h2>Savings goal</h2><div class="row"><span>Emergency fund</span><b>$2,100 / $5,000</b></div><div class="bar"><span style="width:42%"></span></div><p class="small muted">42% of your sample goal reached.</p></div>
+</section>
+<section id="privacy" class="page">
+<h1>Privacy & security</h1><div class="card"><h2>Demo safety information</h2><ul><li>This demo has no account system or database connection.</li><li>CSV preview is processed in this browser tab only.</li><li>Do not enter real bank details or upload sensitive financial records.</li><li>No bank passwords are requested.</li></ul></div>
+<div class="card"><h2>Before a real launch</h2><p class="muted">KeepMore will need tested sign-in, private user-specific database access, secure file handling, clear data retention and deletion controls, and a privacy review before handling real financial information.</p></div>
+</section>
+<footer>KeepMore prototype · Fictional demo data · Not financial advice</footer>
+</main>
+<script>
+document.querySelectorAll('nav button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ btn.classList.add('active');document.getElementById(btn.dataset.page).classList.add('active');
+}));
+document.getElementById('csvFile').addEventListener('change',async e=>{
+ const file=e.target.files[0],out=document.getElementById('csvResult');
+ if(!file){out.textContent='No file selected.';return}
+ if(file.size>2*1024*1024){out.textContent='Please choose a CSV smaller than 2 MB.';return}
+ const text=await file.text();const lines=text.split(/\r?\n/).filter(Boolean);
+ out.textContent=`Preview ready: ${file.name} · ${Math.max(0,lines.length-1)} data rows. This file stays in this browser demo and is not uploaded.`;
+});
+</script>
+</body></html>
