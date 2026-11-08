@@ -105,4 +105,97 @@ const supabaseClient = window.supabase.createClient(
 console.log("KeepMore connected!");
 
 </script>
+ <section id="account-area" style="max-width:420px;margin:30px auto;padding:20px;background:#172033;color:white;border-radius:16px;font-family:Arial;">
+  <h2>Welcome to KeepMore</h2>
+  <p id="account-status">Create an account or log in.</p>
+
+  <form id="signup-form">
+    <h3>Create account</h3>
+    <input id="signup-email" type="email" placeholder="Email address" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box;">
+    <input id="signup-password" type="password" placeholder="Password (8+ characters)" minlength="8" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box;">
+    <button type="submit" style="padding:12px;width:100%;margin-top:8px;">Create account</button>
+  </form>
+
+  <hr style="margin:20px 0;">
+
+  <form id="login-form">
+    <h3>Log in</h3>
+    <input id="login-email" type="email" placeholder="Email address" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box;">
+    <input id="login-password" type="password" placeholder="Password" required style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box;">
+    <button type="submit" style="padding:12px;width:100%;margin-top:8px;">Log in</button>
+  </form>
+
+  <button id="logout-button" type="button" hidden style="padding:12px;width:100%;margin-top:15px;">Log out</button>
+</section>
+
+<script>
+const accountStatus = document.getElementById("account-status");
+
+function showAccountStatus(message) {
+  accountStatus.textContent = message;
+}
+
+document.getElementById("signup-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("signup-email").value.trim();
+  const password = document.getElementById("signup-password").value;
+
+  showAccountStatus("Creating your account...");
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+
+  if (error) {
+    showAccountStatus(error.message);
+    return;
+  }
+
+  if (data.session) {
+    showAccountStatus("Account created! You're logged in.");
+  } else {
+    showAccountStatus("Account created! Please check your email to verify your account.");
+  }
+});
+
+document.getElementById("login-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("login-email").value.trim();
+  const password = document.getElementById("login-password").value;
+
+  showAccountStatus("Logging in...");
+
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    showAccountStatus(error.message);
+  }
+});
+
+document.getElementById("logout-button").addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) showAccountStatus(error.message);
+});
+
+supabaseClient.auth.onAuthStateChange((_event, session) => {
+  if (session) {
+    showAccountStatus("Logged in as " + session.user.email);
+    document.getElementById("logout-button").hidden = false;
+  } else {
+    document.getElementById("logout-button").hidden = true;
+    showAccountStatus("Create an account or log in.");
+  }
+});
+
+supabaseClient.auth.getSession().then(({ data, error }) => {
+  if (error) showAccountStatus(error.message);
+});
+</script>
 </body></html>
