@@ -86,4 +86,23 @@ document.getElementById('csvFile').addEventListener('change',async e=>{
  out.textContent=`Preview ready: ${file.name} · ${Math.max(0,lines.length-1)} data rows. This file stays in this browser demo and is not uploaded.`;
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL = "https://izanurfbiuwldysovkhp.supabase.co/rest/v1/";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_J91cykVUG1DXoaK2-Foq9g_wRGEN5s5";
+
+const supabaseClient = window.supabase.createClient(
+
+  SUPABASE_URL,
+
+  SUPABASE_PUBLISHABLE_KEY
+
+);
+
+console.log("KeepMore connected!");
+
+</script>
 </body></html>
